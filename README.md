@@ -35,7 +35,7 @@ The colummns of the dataset are chose to meet the parameters of this project.
 - Baseball: Contains all the properties
 - Baseball1: Contains type, date, player, event, home_team, away_team
 
-##Constraits
+## Constraits
 - setAway_team: the away and home team can't be the same
 
 ## Enum type
