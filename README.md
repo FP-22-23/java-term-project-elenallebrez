@@ -5,11 +5,18 @@ This project works with a dataset that takes information to compare the home run
 The colummns of the dataset are chose to meet the parameters of this project.
 
 ## Structure of the project
-
-- /scr Folder: contains all the modules with the functions and tests
--- fp:
---- baseball: contains the elements
---- test: contains the test functions
---- utils
-- /data Folder: contains the dataset
--- judge.csv : dataset
+<ul>
+  <li>/scr Folder: contains all the modules with the functions and tests </li>
+  <li>Second item</li>
+  <li>Third item
+    <ul>
+      <li>baseball: contains the elements</li>
+      <li>test: contains the test functions</li>
+      <li>utils</li>
+    </ul>
+  </li>
+  <li>/data Folder: contains the dataset</li>
+  <ul>
+      <li>judge.csv : dataset</li>
+    </ul>
+</ul>
