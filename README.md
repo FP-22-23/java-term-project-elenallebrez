@@ -7,8 +7,6 @@ The colummns of the dataset are chose to meet the parameters of this project.
 ## Structure of the project
 <ul>
   <li>/scr Folder: contains all the modules with the functions and tests </li>
-  <li>Second item</li>
-  <li>Third item
     <ul>
       <li>baseball: contains the elements</li>
       <li>test: contains the test functions</li>
@@ -20,3 +18,25 @@ The colummns of the dataset are chose to meet the parameters of this project.
       <li>judge.csv : dataset</li>
     </ul>
 </ul>
+
+## Implemented types
+- type: Types
+- date: LocalDate
+- speed: Double
+- player: String
+- event: String
+- description: String
+- zone: Integer
+- p_throws: Boolean
+- home_team: String
+- away_team: String
+
+## Constructors
+- Baseball: Contains all the properties
+- Baseball1: Contains type, date, player, event, home_team, away_team
+
+##Constraits
+- setAway_team: the away and home team can't be the same
+
+## Enum type
+- Types: FF,SL,FT,CH,CU
