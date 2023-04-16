@@ -1,0 +1,85 @@
+package baseball;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Baseball2 {
+	private Set<Baseball> matches;
+	
+	public Baseball2() {
+		matches = new HashSet<Baseball>();
+	}
+	
+	public Baseball2(Stream<Baseball>sw) {
+		matches = sw.collect(Collectors.toSet());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(matches);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Baseball2 other = (Baseball2) obj;
+		return Objects.equals(matches, other.matches);
+	}
+	
+	public Set<Baseball> getSetBaseball(){
+		return matches;
+	}
+	
+	public int sizematches() {
+		return matches.size();
+	}
+	
+	public void addmatches() {
+		matches.add(null);
+	}
+	
+	public void addcollectionmatches() {
+		matches.addAll(matches);
+	}
+	public void removemotches() {
+		matches.remove(null);
+	}
+	
+	public Integer counterevent(String event) {
+		Integer res =0;
+		for (Baseball b: matches) {
+			if(b.getSetBaseball.contains(matches)) {
+				res++;
+			}
+			
+		}		
+	}
+	
+	//for each
+	public Boolean fastspeed(Double speed) {
+		Boolean res = false;
+		for(Baseball b: matches) {
+			if(b.getSetBaseball().contains(matches)) {
+				res = true;
+				break;
+			}
+		}
+	}
+	//filter
+	public List<String> playerwiththrows(String player){
+		List<String> res = new ArrayList<>();
+		for(Baseball b: matches) {
+			if(b.getSetBaseball().contains(player)) {
+				res.add(b.getThrows());
+			}
+		}
+	}
