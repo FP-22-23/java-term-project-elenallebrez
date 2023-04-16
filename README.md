@@ -19,6 +19,20 @@ The colummns of the dataset are chose to meet the parameters of this project.
     </ul>
 </ul>
 
+## Data structure
+The dataset can be obtained form this URL: https://www.kaggle.com/datasets/sarmadriaz/a-new-era-of-data-analysis-in-baseball. However, it has been modified to fit the conditions of the term project.
+The columns are the follwings:
+- type: 
+- date: 
+- speed: 
+- player: 
+- event: 
+- description: 
+- zone:
+- p_throws: 
+- home_team:
+- away_team: 
+
 ## Implemented types
 - type: Types
 - date: LocalDate
@@ -40,3 +54,8 @@ The colummns of the dataset are chose to meet the parameters of this project.
 
 ## Enum type
 - Types: FF,SL,FT,CH,CU
+
+## Factory (BaseballFactory)
+
+
+## Container Type - Baseball2 
