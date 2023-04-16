@@ -1,0 +1,43 @@
+package baseball;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.stream.Stream;
+
+import utils.Checkers;
+
+public class BaseballFactory {
+	public static Baseball readBaseball(String fileName) {
+		Baseball res = null;
+		try {
+			Stream<Matches> sp = 
+					File.lines(Path.get(fileName)).skip(1).map(BaseballFactory::parseLine);
+			res = new Baseball(sp);
+		}catch(IOException e) {
+			System.out.println("Error with the file" + fileName);
+			e.printStackTrace();
+		}
+		return res;
+		
+	}
+	
+	public static Matches parseLine(String line) {
+		String[] values = line.split(";");
+			Checkers.check("Format line error", values.length == 10);
+			Types type = values[0].trim();
+			LocalDate date = LocalDate.parse(values[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			Double speed = values[2].trim();
+			String player = values[3].trim(); 
+			String event = values[4].trim();
+			String description = values[5].trim();
+			Integer zone = values[6].trim();
+			Boolean p_throws = values[7].trim();
+			String home_team = values[8].trim();
+			String away_team  = values[9].trim();
+
+	}
+	
+}
