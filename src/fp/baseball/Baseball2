@@ -1,7 +1,9 @@
 package baseball;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -65,7 +67,7 @@ public class Baseball2 {
 	}
 	
 	//for each
-	public Boolean fastspeed(Double speed) {
+	public Boolean fastSpeed(Double speed) {
 		Boolean res = false;
 		for(Baseball b: matches) {
 			if(b.getSetBaseball().contains(matches)) {
@@ -75,7 +77,7 @@ public class Baseball2 {
 		}
 	}
 	//filter
-	public List<String> playerwiththrows(String player){
+	public List<String> playerWiThrows(String player){
 		List<String> res = new ArrayList<>();
 		for(Baseball b: matches) {
 			if(b.getSetBaseball().contains(player)) {
@@ -83,4 +85,37 @@ public class Baseball2 {
 			}
 		}
 	}
+	//MAP
+	
+	//keys are properties and values are count
+	public Map<String, Double> getTimesHomeTeam(){
+		Map<String ,Double> res = new HashMap<>();
+		for (Baseball b: matches) {
+			if (res.keySet().contains(b.matches().getHome_team())) {
+				res.put(b.matches().getHome_team(), res.get(b.matches().getHome_team())+1);
+			}
+			else {
+				res.put(b.matches().home_team(), 1);
+			}
+		}
+		return res;
+	}
+	
+	//keys are properties and values are collections
+	public Map<String, List<Double>> speedPlayers(){
+		 Map<String, List<Double>> res = new HashMap<>();
+		 for (Baseball b: matches) {
+			 if (res.keySet().contains(b.matches().getPlayer())) {
+					res.get(b.matches().getPlayer()).add(b.getSpeed());
+				}
+			 else {
+				 List<Double> mylist = new ArrayList();
+				 mylist.add(b.getSpeed());
+				 res.put(b.matches.getPlayer, mylist);
+			 }
+		 }
+		 return res;
+	}
+
 }
+
