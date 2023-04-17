@@ -23,15 +23,15 @@ The colummns of the dataset are chose to meet the parameters of this project.
 The dataset can be obtained form this URL: https://www.kaggle.com/datasets/sarmadriaz/a-new-era-of-data-analysis-in-baseball. However, it has been modified to fit the conditions of the term project.
 The columns are the follwings:
 - type: 
-- date: 
-- speed: 
-- player: 
-- event: 
-- description: 
-- zone:
-- p_throws: 
-- home_team:
-- away_team: 
+- date: The date when the match has taken place
+- speed: the speed of the home run
+- player: name of the player who throw the ball
+- event: how the thorwn counts
+- description: describing more detailed the event
+- zone: the zone where has the ball fall
+- p_throws: the hand which is used to throw the ball, it can be right or left
+- home_team: the name of the local team
+- away_team: the name of the away team
 
 ## Implemented types
 - type: Types
@@ -56,6 +56,27 @@ The columns are the follwings:
 - Types: FF,SL,FT,CH,CU
 
 ## Factory (BaseballFactory)
-
+This type is used to create objects of type Baseball.
+- readBaseball(String fileName): is used to read the csv file
+- parseLine(String line): from each line of the dataset, it creates an object of type Baseball
 
 ## Container Type - Baseball2 
+#### Constructors:
+- C1: Creates an empty collection.
+- C2: Creates an object of type matches from the previous constructor
+- C3: creates an object of type matches from a stream
+
+#### Equality
+Two matches are when they contain the same matches
+
+#### Other operation
+- public Set<Baseball> getSetBaseball()
+- int sizematches()
+- void addmatches()
+- void addcollectionmatches(
+- void removemotches()
+- Integer counterevent(String event
+- Boolean fastSpeed(Double speed)
+- List<String> playerWiThrows(String player)
+- Map<String, Double> getTimesHomeTeam()
+- Map<String, List<Double>> speedPlayers()
