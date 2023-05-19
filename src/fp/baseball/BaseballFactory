@@ -1,8 +1,8 @@
 package baseball;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
@@ -10,34 +10,46 @@ import java.util.stream.Stream;
 import utils.Checkers;
 
 public class BaseballFactory {
-	public static Baseball readBaseball(String fileName) {
-		Baseball res = null;
+
+	public static Baseball2 readBaseball(String fileName) {
+		Baseball2 res = null;
 		try {
-			Stream<Matches> sp = 
-					File.lines(Path.get(fileName)).skip(1).map(BaseballFactory::parseLine);
-			res = new Baseball(sp);
-		}catch(IOException e) {
+			Stream<Baseball> sp = Files.lines(Paths.get(fileName)).skip(1).map(BaseballFactory::parseLine);
+			res = new Baseball2(sp);
+
+		} catch (IOException e) {
 			System.out.println("Error with the file" + fileName);
 			e.printStackTrace();
 		}
 		return res;
-		
-	}
-	
-	public static Matches parseLine(String line) {
-		String[] values = line.split(";");
-			Checkers.check("Format line error", values.length == 10);
-			Types type = values[0].trim();
-			LocalDate date = LocalDate.parse(values[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-			Double speed = values[2].trim();
-			String player = values[3].trim(); 
-			String event = values[4].trim();
-			String description = values[5].trim();
-			Integer zone = values[6].trim();
-			Boolean p_throws = values[7].trim();
-			String home_team = values[8].trim();
-			String away_team  = values[9].trim();
 
 	}
+
+	public static Baseball parseLine(String line) {
+		String[] values = line.split(";");
+		Checkers.check("Format line error", values.length == 10);
+		Types type = Types.valueOf(values[0].trim());
+		LocalDate date = LocalDate.parse(values[1].trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		Double speed = Double.valueOf(values[2].trim());
+		String player = values[3].trim();
+		String event = values[4].trim();
+		String description = values[5].trim();
+		Integer zone = Integer.valueOf(values[6].trim());
+		Boolean p_throws = parseThrows(values[7].trim());
+		String home_team = values[8].trim();
+		String away_team = values[9].trim();
+
+		return new Baseball(type, date, speed, player, event, description, zone, p_throws, home_team, away_team);
+	}
+
+	// PARSEAR
+	private static Boolean parseThrows(String cad) {
+		if (cad.equals("R")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
+
 }
