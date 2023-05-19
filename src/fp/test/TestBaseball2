@@ -1,0 +1,92 @@
+package test;
+
+import baseball.BaseballFactory;
+import baseball.Baseball;
+import baseball.Baseball2;
+import baseball.Types;
+
+public class TestBaseball2 {
+	
+	private static Baseball2 matches = BaseballFactory.readBaseball("./data/judge.csv");
+	
+	public static void main(String[] args) {
+		testsizematches();
+		testCounterEvent("NYY");
+		testFastSpeed(30.0);
+		testPlayerWithThrows(Types.CH);
+		testTimesHomeTeam();
+		testSpeedPlayers();
+		testFastSpeedS(30.0);
+		testCounterEventS("NYY");
+		testPlayerWiThrowsS(Types.FF);
+		testMaxSpeed();
+		testminSpeed2();
+		testgetTimesHomeTeamS();
+		testSpeedPlayersS();
+		testMinSpeedPerType(2017);
+		testgetTopNSpeeds(3);
+		testTeamWithMostHomeGames();
+		
+	}
+	
+	private static void testsizematches() {
+		System.out.println("There are " + matches.sizematches() + "baseball result in the file");
+
+	}
+	
+	private static void testCounterEvent(String n) {
+		System.out.println("The number of times that: " +n+ "has been a home team is: " + matches.counterevent(n));
+	}
+	
+	private static void testFastSpeed(Double n) {
+		System.out.println("Is there any player that its speed was greater than "+ n +"? "+ matches.fastSpeed(n));
+	}
+	
+	private static void testPlayerWithThrows(Types n) {
+		System.out.println("The type "+n+ " has these plays " + matches.playerWiThrows(n));	
+	}
+
+	private static void testTimesHomeTeam() {
+		System.out.println("This is a map where you can see the teams and how many times have they been home team: " + matches.getTimesHomeTeam());	
+	}
+	
+	private static void testSpeedPlayers() {
+		System.out.println("This is a map where you can see the players and their speeds: " + matches.speedPlayers());	
+	}
+	
+	private static void testFastSpeedS(Double n) {
+		System.out.println("Is there any speed greater than "+n+"? " + matches.fastSpeedS(n) );
+	}
+	
+	private static void testCounterEventS(String n) {
+		System.out.println("How many times " + n + " has been home team?" + matches.countereventS(n));
+	}
+	
+	private static void testPlayerWiThrowsS(Types n) {
+		System.out.println("These has "+ n+ "type. " +matches.playerWiThrowsS(n));
+	}
+	
+	private static void testMaxSpeed() {
+		System.out.println("This is the maximun speed: " + matches.maxSpeed());	
+	}
+	
+	private static void testminSpeed2() {
+		System.out.println("These are the 3 minimum speeds " +matches.minSpeed2());
+	}
+	private static void testgetTimesHomeTeamS() {
+		System.out.println("These are the teams an how many times the have been home team: " +matches.getTimesHomeTeamS());
+	}
+	private static void testSpeedPlayersS() {
+		System.out.println("These are the players and their speeds: "+ matches.speedPlayersS());
+	}
+	private static void testMinSpeedPerType(Integer n) {
+		System.out.println("These are the types and each minimum speed, " + matches.minSpeedPerType(n)+ "of the year " + n);
+	}
+	private static void testgetTopNSpeeds(int n) {
+		System.out.println("These are the " + n + "algo"+ matches.getTopNSpeeds(n));
+	}
+	
+	private static void testTeamWithMostHomeGames() {
+		System.out.println("This is the team that most played as home team: " + matches.getTeamWithMostHomeGames());
+	}
+}
