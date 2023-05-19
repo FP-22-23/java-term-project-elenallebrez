@@ -116,6 +116,87 @@ public class Baseball2 {
 		 }
 		 return res;
 	}
+	
+	public Boolean fastSpeedS(Double speed) {
+		return matches.stream()
+				.anyMatch(x-> speed >= x.getSpeed());
+	}
+	
+	public Long countereventS(String homeTeam) {
+		return matches.stream()
+				.filter(x-> homeTeam.equals(x.getHome_team()))
+				.count();
+	}
+
+	public List<Baseball> playerWiThrowsS(Types type){
+		return matches.stream()
+				.filter(x-> type.equals(x.getType()))
+				.collect(Collectors.toList());
+	}
+
+	public Double maxSpeed() {
+	    return matches.stream()
+	            .map(Baseball::getSpeed)
+	            .max(Comparator.naturalOrder())
+	            .orElse(0.0);
+	}
+	public List<Double> minSpeed2() {
+	    return matches.stream()
+	            .map(Baseball::getSpeed)
+	            .sorted(Comparator.naturalOrder())
+	            .limit(3)
+	            .collect(Collectors.toList());
+	}
+	
+	public Map<String, Integer> getTimesHomeTeamS() {
+	    return matches.stream()
+	            .collect(Collectors.groupingBy(Baseball::getHome_team, Collectors.summingInt(e -> 1)));
+	}
+
+	public Map<String, List<Double>> speedPlayersS() {
+	    return matches.stream()
+	            .collect(Collectors.groupingBy(Baseball::getPlayer,
+	                    Collectors.mapping(Baseball::getSpeed, Collectors.toList())));
+	}
+	
+	public Map<Types, Double> minSpeedPerType(Integer year) {
+	    Map<Types, List<Baseball>> speedPerTypes = matches.stream()
+	            .filter(p -> p.getDate().getYear()== year)
+	            .collect(Collectors.groupingBy(Baseball::getType));
+
+	    return speedPerTypes.entrySet().stream()
+	            .collect(Collectors.toMap(Map.Entry::getKey, e -> minSpeed(e.getValue())));
+	}
+
+	private Double minSpeed(List<Baseball> list) {
+	    return list.stream()
+	            .min(Comparator.comparing(Baseball::getSpeed))
+	            .map(Baseball::getSpeed)
+	            .orElse(0.0);
+	}
+
+    public SortedMap<Double, List<Baseball>> getTopNSpeeds(int n) {
+        return matches.stream()
+                .collect(Collectors.groupingBy(Baseball::getSpeed))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByKey(Comparator.reverseOrder()))
+                .limit(n)
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (v1, v2) -> v1,
+                        TreeMap::new));
+    }
+    public String getTeamWithMostHomeGames() {
+        Map<String, Long> homeGameCounts = matches.stream()
+                .collect(Collectors.groupingBy(Baseball::getHome_team, Collectors.counting()));
+
+        return homeGameCounts.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
+    
 
 }
-
