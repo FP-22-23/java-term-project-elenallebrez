@@ -22,11 +22,11 @@ The colummns of the dataset are chose to meet the parameters of this project.
 ## Data structure
 The dataset can be obtained form this URL: https://www.kaggle.com/datasets/sarmadriaz/a-new-era-of-data-analysis-in-baseball. However, it has been modified to fit the conditions of the term project.
 The columns are the follwings:
-- type: 
+- type: is the type of thrown
 - date: The date when the match has taken place
 - speed: the speed of the home run
 - player: name of the player who throw the ball
-- event: how the thorwn counts
+- event: how the thrown counts
 - description: describing more detailed the event
 - zone: the zone where has the ball fall
 - p_throws: the hand which is used to throw the ball, it can be right or left
@@ -34,26 +34,38 @@ The columns are the follwings:
 - away_team: the name of the away team
 
 ## Implemented types
-- type: Types
-- date: LocalDate
-- speed: Double
-- player: String
-- event: String
-- description: String
-- zone: Integer
-- p_throws: Boolean
-- home_team: String
-- away_team: String
-
-## Constructors
+### Properties
+- type: of type Types 
+- date: of type LocalDate
+- speed: of type Double
+- player: of type String
+- event: of type String
+- description: of type String
+- zone: of type Integer
+- p_throws: of type Boolean
+- home_team: of type String
+- away_team: of type String
+### Derived properties
+- 
+### Constructors
 - Baseball: Contains all the properties
 - Baseball1: Contains type, date, player, event, home_team, away_team
 
-## Constraits
+### Restrictions
+- setSpeed: the speed can't be lower than 0
 - setAway_team: the away and home team can't be the same
 
+### Equality criteria
+They are equals when they have the same date and event
+
+### Natural order
+They are ordered by date, and then by the name of the player
+
+### Other methods
+- String to String: Returns a string with some information
+
 ## Enum type
-- Types: FF,SL,FT,CH,CU
+- Types: FF, SL,FT,CH, CU, FC, SI,KC, FS, KN
 
 ## Factory (BaseballFactory)
 This type is used to create objects of type Baseball.
