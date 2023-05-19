@@ -34,7 +34,7 @@ The columns are the follwings:
 - away_team: the name of the away team
 
 ## Implemented types
-### Properties
+#### Properties
 - type: of type Types 
 - date: of type LocalDate
 - speed: of type Double
