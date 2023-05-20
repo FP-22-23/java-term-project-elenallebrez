@@ -23,6 +23,7 @@ public class Baseball{
 			Integer zone,Boolean p_throws,String home_team,String away_team ){
 		this.type = type;
 		this.date = date;
+		this.speed = speed;
 		this.player = player;
 		this.event = event;
 		this.description = description;
@@ -36,6 +37,7 @@ public class Baseball{
 			String home_team,String away_team ){
 		this.type = type;
 		this.date = date;
+		this.speed = speed;
 		this.player = player;
 		this.event = event;
 		this.home_team = home_team;
